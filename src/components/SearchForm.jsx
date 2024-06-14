@@ -15,9 +15,10 @@ const SearchForm = ({ onSearch }) => {
   const onSubmit = ev => {
     ev.preventDefault();
 
-const options ={
-    q:searchStr,searchOption
-}
+    const options = {
+      q: searchStr,
+      searchOption,
+    };
 
     onSearch(options);
   };
