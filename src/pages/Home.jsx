@@ -1,19 +1,19 @@
-import { useState } from "react";
-import { searchForShows } from "./../api/tvmaze";
+import { useState } from 'react';
+import { searchForShows } from './../api/tvmaze';
 const Home = () => {
-  const [searchStr, setSearchStr] = useState("");
+  const [searchStr, setSearchStr] = useState('');
   const [apiData, setApiData] = useState(null);
   const [apiDataError, setApiDataError] = useState(null);
 
-  const onSearchInputChange = (ev) => {
+  const onSearchInputChange = ev => {
     setSearchStr(ev.target.value);
   };
 
-  const onSearch = async (ev) => {
+  const onSearch = async ev => {
     ev.preventDefault();
     try {
       setApiDataError(null);
-      
+
       const result = await searchForShows(searchStr);
       setApiData(result);
     } catch (error) {
@@ -27,7 +27,7 @@ const Home = () => {
     }
 
     if (apiData) {
-      return apiData.map((data) => (
+      return apiData.map(data => (
         <div key={data.show.id}>{data.show.name}</div>
       ));
     }
