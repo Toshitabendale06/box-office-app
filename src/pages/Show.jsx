@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getShowById } from '../api/tvmaze';
 import ShowMainData from '../components/shows/ShowMainData';
@@ -18,32 +18,36 @@ const Show = () => {
     return <div>We have an error : {showError.message}</div>;
   }
   if (showData) {
-    <div>
-      <ShowMainData
-        images={showData.images}
-        name={showData.name}
-        rating={showData.rating}
-        summary={showData.summary}
-        genres={showData.genres}
-      />
+    return (
       <div>
-        <h2>Details</h2>
-        <Details
-          status={showData.status}
-          premiered={showData.premiered}
-          network={showData.network}
-        />
-      </div>
-      <div>
-        <h2>Seasons</h2>
-        <Seasons seasons={showData._embedded.seasons} />
-      </div>
+        <Link to="/">Go to home page</Link>
 
-      <div>
-        <h2>Cast</h2>
-        <Cast cast={showData._embedded.cast} />
+        <ShowMainData
+          images={showData.images}
+          name={showData.name}
+          rating={showData.rating}
+          summary={showData.summary}
+          genres={showData.genres}
+        />
+        <div>
+          <h2>Details</h2>
+          <Details
+            status={showData.status}
+            premiered={showData.premiered}
+            network={showData.network}
+          />
+        </div>
+        <div>
+          <h2>Seasons</h2>
+          <Seasons seasons={showData._embedded.seasons} />
+        </div>
+
+        <div>
+          <h2>Cast</h2>
+          <Cast cast={showData._embedded.cast} />
+        </div>
       </div>
-    </div>;
+    );
   }
   return <div>Data is loading</div>;
 };
