@@ -23,7 +23,7 @@ const Show = () => {
         <Link to="/">Go to home page</Link>
 
         <ShowMainData
-          images={showData.images}
+          image={showData.image}
           name={showData.name}
           rating={showData.rating}
           summary={showData.summary}
